@@ -1,33 +1,36 @@
-In words, what do you expect multiply to do? 
-    The function multiply will multiply the numeric value of x by the numeric value of y.
-
-What types do you expect the parameter x and y to be?
-    x and y will be numbers or strings. If strings, x and y will need to be converted to numbers.
-
-What type do you expect the output to be?
-    The output will be a number.
-
-
-What do you expect the output of multiply (5,10) to be?
-    The output of multiply (5,10) will be 50
-
-
-
-
 Unit Tests:
 A function called "multiplication" that returns the product of the two input numbers.
 
 A function called "concatOdds" takes two arrays of integers as arguments. It should return a single array that only contains the odd numbers, in ascending order, from both of the arrays.
 Example: concatOdds([3, 2, 1], [9, 1, 1, 1, 4, 15, -1])
 ...should result in [-1, 1, 3, 9, 15]
+
 Think about the following; you may need to make assumptions or decisions about the prompt and how the code should behave:
 What should happen with unexpected inputs?
 What kinds of unexpected inputs should we worry about?
 What should happen when there are multiples of the same odd number in the arrays? (Hint: We gave you the answer to this one in the example above.)
 
+Multiplication Answers:
+    - expect multiplication(3,5) to be a number -> ideal format
+    - expect multiplication('3',5) to be a number -> converts string type to number type
+    - expect multiplication('a',5) to be an error
+    - expect multiplication(3) to be an error -> less than 2 arguments
+    - expect multiplication(3,5,9) to be an error -> more than 2 arguments
+
+Concat Answers:
+    - expect concatOdds([3, 2, 1], [9, 1, 1, 1, 4, 15, -1]) to be array of numbers -> ideal format
+    - expect concatOdds(['3', '2', '1'], [9, 1, 1, 1, 4, 15, -1]) to be array of numbers -> convert string numbers into numbers
+    - expect concatOdds(['a', 'b', 'c'], [9, 1, 1, 1, 4, 15, -1]) to be error -> strings with non-number symbols are not accepted
+    - expect concatOdds(array1) to be error -> less than two arrays
+    - expect concatOdds(array1, array2, array3) to be error -> more than two arrays
+    - repeat array values should only be included once in output
+
+
+
 
 Functional Tests:
-A shopping cart checkout feature that allows a user to check out as a guest (without an account), or as a logged-in user. They should be allowed to do either, but should be asked if they want to create an account or log in if they check out as a guest.
+A shopping cart checkout feature that allows a user to check out as a guest (without an account), or as a logged-in user.
+They should be allowed to do either, but should be asked if they want to create an account or log in if they check out as a guest.
 Think about the following; you may need to make assumptions or decisions about the prompt and how the feature should behave:
 What should happen if the cart is empty?
 What needs to be shown to the user at each step of check out?
@@ -35,8 +38,25 @@ What behaviors of this feature does the prompt miss or gloss over?
 Hint: Observe the shopping cart and checkout features of some popular websites to get some ideas!
 Please submit as a text file or a GitHub link (make sure it is set to public)
 
-Rubric
-Writing Test Specifications
+
+Answers:
+    Cart
+    User clicks checkout from cart with no items in cart -> return to cart w/ error message
+    User clicks checkout from cart with items in cart -> continue to Login Page
+
+    Login Page
+    User clicks guest checkout -> continue to blank checkout page
+    User clicks create account -> continue to account creation page
+    User does not fill in login info and clicks login -> return to login page  w/ error message
+    User info does not match any account in the database -> return to login page  w/ error message
+    User info matches an account in the database -> continue to checkout page with user info pre-filled according to account info.
+
+    Account Creation Page
+    Users info does not meet the base formatting criteria (ex: all fields filled in, password length/type, etc.) -> return to account creation page  w/ error message
+    Users info matches meets the base formatting criteria (ex: all fields filled in, password length/type, etc.) -> continue to database check
+    User info is found in the existing database -> return to account creation page  w/ error message
+    User info is not found in existing database -> new account is successfully created and user is returned to login page
 
 
+    
 
